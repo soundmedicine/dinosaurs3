@@ -5,7 +5,7 @@ export default class Footer extends Component {
         return (
             <div>
                 <footer>
-                    <small>Copyright 1982</small>
+                    <small>&copy; 1982</small>
                 </footer>
                 </div>
         )
