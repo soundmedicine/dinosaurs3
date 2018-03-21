@@ -6,7 +6,7 @@ export default class Form extends Component {
         super(props)
         this.state = {
             text: '',
-            isToggleOn: false,
+            isToggleOn: true,
             message: ''
         }
         this.handleChange = this.handleChange.bind(this)
@@ -20,10 +20,10 @@ export default class Form extends Component {
 
     handleClick  =(e) => {
         e.preventDefault()
-        if (this.state.isToggleOn === false) {
-        this.setState({isToggleOn: true})
-        } else {
+        if (this.state.isToggleOn === true) {
         this.setState({isToggleOn: false})
+        } else {
+        this.setState({isToggleOn: true})
         }
         
     }
