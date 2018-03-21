@@ -10,12 +10,10 @@ export default class Details extends Component {
         return fetch('listing.json')
         .then(response => response.json())
         .then(listing => this.setState({listing: listing}))
-        
         }
-    
 
     render() {
-        let listing = this.state.listing
+       const listing = this.state.listing
         return (
             <section className="job-details">
                 <h2>Job Details</h2>
