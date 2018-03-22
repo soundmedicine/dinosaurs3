@@ -11,9 +11,11 @@ export default class Form extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
 
     handleChange = (e) => {
+        e.preventDefault()
         this.setState({
             text: e.target.value,
             })
@@ -25,7 +27,6 @@ export default class Form extends Component {
         this.setState({
             message: 'Your application was submitted!',
             text: ''})
-       
     }
 
     handleClick = (e) => {
@@ -38,12 +39,14 @@ export default class Form extends Component {
     }
 
     render() {
-        
+        console.log(this.state)
+        const message = this.state.message
         return (
-                <form id="application-input" onChange={this.handleChange} onSubmit={this.handleSubmit}> 
+                <form id="application-input"  onSubmit={this.handleSubmit}> 
                     <label>Apply Here:</label>
-                    <textarea id="application-text" cols="100" rows="8" ref={(input) => {this.text = input}}></textarea>
-                    <input name="text" type="submit" id="submit" value="Submit" />
+                    <textarea id="application-text" cols="100" rows="8" ref={(input) => {this.text = input}} onChange={this.handleChange}></textarea>
+                    <input name="text" type="submit" id="submit" value="Submit"  />
+                    <p id="message">{message}</p>
                     <button id="preview-toggle" onClick={this.handleClick} >Show Preview</button>
                     {this.state.isToggleOn ? <Preview text = {this.state.text} message = {this.state.message}/> : null}
                     </form>
